@@ -14,8 +14,8 @@ class ViewController: UIViewController, XMLParserDelegate, UITableViewDelegate, 
     var item:[String:String] = [:]  // item[key] => value
     var elements:[[String:String]] = []
     var currentElement = ""
-
-//    @IBOutlet weak var fName: UILabel!
+      
+      //    @IBOutlet weak var fName: UILabel!
 //    @IBOutlet weak var fColor: UILabel!
 //    @IBOutlet weak var fCost: UILabel!
     
@@ -25,7 +25,7 @@ class ViewController: UIViewController, XMLParserDelegate, UITableViewDelegate, 
         myTableView.delegate = self
         myTableView.dataSource = self
         
-        if let path = Bundle.main.url(forResource: "fruit", withExtension: "xml") {
+        if let path = Bundle.main.url(forResource: "book", withExtension: "xml") {
             //print(path)
             if let parser = XMLParser(contentsOf: path) {
                 parser.delegate = self
@@ -68,13 +68,11 @@ class ViewController: UIViewController, XMLParserDelegate, UITableViewDelegate, 
         
         let myItem = elements[indexPath.row]
         
-        let name = cell.viewWithTag(1) as! UILabel
-        let color = cell.viewWithTag(2) as! UILabel
-        let cost = cell.viewWithTag(3) as! UILabel
+        let title = cell.viewWithTag(1) as! UILabel
+        let author = cell.viewWithTag(2) as! UILabel
         
-        name.text = myItem["name"]
-        color.text = myItem["color"]
-        cost.text = myItem["cost"]
+        title.text = myItem["title"]
+        author.text = myItem["author"]
         
         return cell
     }
@@ -104,7 +102,7 @@ class ViewController: UIViewController, XMLParserDelegate, UITableViewDelegate, 
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "item" {
+        if elementName == "book" {
             elements.append(item)
         }
     }
