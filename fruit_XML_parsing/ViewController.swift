@@ -71,8 +71,8 @@ class ViewController: UIViewController, XMLParserDelegate, UITableViewDelegate, 
         let title = cell.viewWithTag(1) as! UILabel
         let author = cell.viewWithTag(2) as! UILabel
         
-        title.text = myItem["ctprvn_nm"]
-        author.text = myItem["sgg_nm"]
+        title.text = myItem["vt_acmdfclty_nm"]
+        author.text = myItem["dtl_adres"]
         
         return cell
     }
