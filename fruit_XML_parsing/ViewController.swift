@@ -71,8 +71,8 @@ class ViewController: UIViewController, XMLParserDelegate, UITableViewDelegate, 
         let title = cell.viewWithTag(1) as! UILabel
         let author = cell.viewWithTag(2) as! UILabel
         
-        title.text = myItem["title"]
-        author.text = myItem["author"]
+        title.text = myItem["ctprvn_nm"]
+        author.text = myItem["sgg_nm"]
         
         return cell
     }
@@ -102,7 +102,7 @@ class ViewController: UIViewController, XMLParserDelegate, UITableViewDelegate, 
     }
 
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "book" {
+        if elementName == "row" {
             elements.append(item)
         }
     }
